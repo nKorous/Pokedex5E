@@ -367,7 +367,9 @@ end
 
 local function server_on_data(data, ip, port, client)
 	local success = false
-	-- TODO before decoding, decrypt	
+	print("server_on_data")
+	pprint(data)
+	-- TODO before decoding, decrypt
 	if pcall(function() json_data = json.decode(data) end) then
 		if type(json_data) == "table" and json_data.key and type(json_data.key) == "string" and json_data.payload then
 			if json_data.key == INITIAL_PACKET_KEY then
