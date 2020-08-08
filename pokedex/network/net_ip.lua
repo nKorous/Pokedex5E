@@ -32,7 +32,9 @@ function M.refresh_local_ip()
 		local found_ip = nil
 		local local_ip_info = sys.get_ifaddrs()
 		print("-- LOCAL IP FROM net_ip.lua --")
-		pprint(local_ip_info)
+		for _, info in pairs(local_ip_info) do
+			pprint(info)
+		end
 		print("------------------------------")
 		for i=1,#local_ip_info do
 			local t = local_ip_info[i]

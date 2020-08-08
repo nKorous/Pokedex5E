@@ -665,12 +665,13 @@ function M.get_default_connect_port()
 end
 
 function M.start_server(server_id, server_name, port)
+	print("--START SERVER DEBUG --")
 	port = port or netcore_settings.default_host_port
 	if port ~= netcore_settings.default_host_port then
 		netcore_settings.default_host_port = port
 		settings.save()
 	end
-	
+	print("Hosting on port:", port
 	M.disconnect()
 
 	server_current_info = 
@@ -684,7 +685,12 @@ function M.start_server(server_id, server_name, port)
 		id = server_id,
 		name = server_name,
 	}
+	print("server_current_info")
+	pprint(server_current_info)
 
+	print("client_latest_server_info")
+	pprint(client_latest_server_info)
+	
 	if not netcore_settings.server_known_client_info[server_current_info.id] then
 		netcore_settings.server_known_client_info[server_current_info.id] = {}
 	end
@@ -696,6 +702,9 @@ function M.start_server(server_id, server_name, port)
 		name=server_name,
 		port=port,
 	})
+	print("extra_data")
+	pprint(extra_data)
+	
 	p2p.broadcast(get_broadcast_name(), extra_data)
 
 	local data_func = QUEUE_RECEIVED_MESSAGES and server_on_data_queue or server_on_data		
@@ -708,6 +717,7 @@ function M.start_server(server_id, server_name, port)
 
 	server_send_client_connect_cbs(client_current_profile_id)
 	send_local_outgoing_messages()
+	print("--START SERVER END --")
 end
 
 function M.stop_server()
