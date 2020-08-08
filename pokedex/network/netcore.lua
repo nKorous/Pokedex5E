@@ -707,12 +707,16 @@ function M.start_server(server_id, server_name, port)
 	
 	p2p.broadcast(get_broadcast_name(), extra_data)
 
-	local data_func = QUEUE_RECEIVED_MESSAGES and server_on_data_queue or server_on_data		
+	local data_func = QUEUE_RECEIVED_MESSAGES and server_on_data_queue or server_on_data
+	print("Creating server")
 	server = tcp_server.create(port, data_func, server_on_client_connected, server_on_client_disconnected)
+	print("Starting Server")
 	server.start()
 
+	print("Server Ensure")
 	server_ensure_client_info(client_current_profile_id, true)
-	
+
+	print("Server change state to M.STATE_SERVING")
 	change_state_to(M.STATE_SERVING)
 
 	server_send_client_connect_cbs(client_current_profile_id)
