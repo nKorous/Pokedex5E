@@ -116,19 +116,24 @@ local function on_server_client_connect(client_id)
 end
 
 local function on_server_members_data(member_id, payload)
-	
+	print("member id", member_id)
 	local server_id = netcore.get_server_id()
+	print("server id", server_id)
 	if not server_member_data[server_id] then
 		server_member_data[server_id] = {}
 	end
 	if not server_member_data[server_id][member_id] then
 		server_member_data[server_id][member_id] = {}
 	end
+	print("server_member_data")
+	pprint(server_member_data)
 	utils.deep_merge_into(server_member_data[server_id][member_id], payload.member_data)
 	settings.save()
 
 	-- Send the new member's data to everyone else
 	local all_client_ids = netcore.server_get_connected_ids()
+	print("all_client_ids")
+	pprint(all_client_ids)
 	for i=1,#all_client_ids do
 		local this_client_id = all_client_ids[i]
 		if this_client_id ~= member_id then
