@@ -96,22 +96,27 @@ end
 
 local function on_server_client_connect(client_id)
 	local server_id = netcore.get_server_id()
+	print("server_id", server_id)
 	if not server_member_data[server_id] then
 		server_member_data[server_id] = {}
 	end	
-	
+	print("server_member_data")
+	pprint(server_member_data)
 	local other_members_data = {}
 	for k,v in pairs(server_member_data[server_id]) do		
 		if k ~= client_id then
 			table.insert(other_members_data, {id=k, data=v})
 		end
 	end
+	print("other_members_data")
+	pprint(other_members_data)
 	if next(other_members_data) then
 		netcore.send_to_client(MEMBER_DATA_KEY, other_members_data, client_id)
 	end
 end
 
 local function on_server_members_data(member_id, payload)
+	
 	local server_id = netcore.get_server_id()
 	if not server_member_data[server_id] then
 		server_member_data[server_id] = {}
@@ -127,6 +132,7 @@ local function on_server_members_data(member_id, payload)
 	for i=1,#all_client_ids do
 		local this_client_id = all_client_ids[i]
 		if this_client_id ~= member_id then
+			print("on_server_members_data")
 			netcore.send_to_client(MEMBER_DATA_KEY, {{id=member_id, data=payload.member_data}}, this_client_id)
 		end
 	end
