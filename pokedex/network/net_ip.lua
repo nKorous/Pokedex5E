@@ -31,6 +31,9 @@ function M.refresh_local_ip()
 
 		local found_ip = nil
 		local local_ip_info = sys.get_ifaddrs()
+		print("-- LOCAL IP FROM net_ip.lua --")
+		pprint(local_ip_info)
+		print("------------------------------")
 		for i=1,#local_ip_info do
 			local t = local_ip_info[i]
 			if t.running and t.up then

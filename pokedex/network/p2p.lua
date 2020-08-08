@@ -114,6 +114,11 @@ function M.create(port)
 				listener:settimeout(0.05)
 				-- POKEDEX5E_END
 				local data, server_ip, server_port = listener:receivefrom()
+				print("-- P2P CREATE p2p.lua --")
+				pprint(server_ip)
+				pprint(server_port)
+				pprint(data)
+				print("------------------------------")
 				if data and data == message then
 					callback(server_ip, server_port)
 					state = STATE_DISCONNECTED
