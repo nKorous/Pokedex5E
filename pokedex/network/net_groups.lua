@@ -58,10 +58,13 @@ end
 function M.start_server(group_id, port)
 	local group = net_groups_settings.server_groups[group_id]
 	if group then
+		print("START SERVER")
+		pprint(group)
 		group.last_used_time = socket.gettime()
 		settings.save()
 
 		broadcast.send(M.MSG_GROUPS_CHANGED)
+		pprint("--------------")
 		netcore.start_server(group_id, group.name, port)		
 	end
 	

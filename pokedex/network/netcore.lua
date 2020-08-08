@@ -714,8 +714,8 @@ function M.start_server(server_id, server_name, port)
 	server.start()
 
 	print("Server Ensure")
-	server_ensure_client_info(client_current_profile_id, true)
-
+	local s = server_ensure_client_info(client_current_profile_id, true)
+	pprint(s)
 	print("Server change state to M.STATE_SERVING")
 	change_state_to(M.STATE_SERVING)
 

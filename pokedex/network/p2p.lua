@@ -68,9 +68,6 @@ function M.create(port)
 		broadcast_co = coroutine.create(function()
 			while state == STATE_BROADCASTING do
 				local ok, err = pcall(function()
-					print("-- doing a broadcast p2p.lua --")
-					pprint(message)
-					print("------------------------------")
 					broadcaster:sendto(message, "255.255.255.255", port)
 				end)
 				if err then
