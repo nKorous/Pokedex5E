@@ -671,7 +671,7 @@ function M.start_server(server_id, server_name, port)
 		netcore_settings.default_host_port = port
 		settings.save()
 	end
-	print("Hosting on port:", port
+	print("Hosting on port:", port)
 	M.disconnect()
 
 	server_current_info = 
