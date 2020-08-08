@@ -58,7 +58,9 @@ function M.create(port)
 			message = message .. "|" .. extra_str
 		end
 		-- POKEDEX5E_END
-
+		print("-- broadcast P2P p2p.lua --")
+		pprint(message)
+		print("------------------------------")
 		-- POKEDEX5E_START
 		--print("Broadcasting " .. message .. " on port " .. port)
 		-- POKEDEX5E_END
@@ -66,6 +68,9 @@ function M.create(port)
 		broadcast_co = coroutine.create(function()
 			while state == STATE_BROADCASTING do
 				local ok, err = pcall(function()
+					print("-- doing a broadcast p2p.lua --")
+					pprint(message)
+					print("------------------------------")
 					broadcaster:sendto(message, "255.255.255.255", port)
 				end)
 				if err then
@@ -114,7 +119,7 @@ function M.create(port)
 				listener:settimeout(0.05)
 				-- POKEDEX5E_END
 				local data, server_ip, server_port = listener:receivefrom()
-				print("-- P2P CREATE p2p.lua --")
+				print("-- listen P2P.lua --")
 				pprint(server_ip)
 				pprint(server_port)
 				pprint(data)

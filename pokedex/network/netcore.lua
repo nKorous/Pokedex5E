@@ -817,9 +817,10 @@ function M.stop_client()
 end
 
 function M.send_to_client(key, payload, client_unique_id)
+	print("Send to client", key)
 	if server ~= nil and server_current_info.id then
 		local known_client_info = netcore_settings.server_known_client_info[server_current_info.id][client_unique_id]
-		if known_client_info then			
+		if known_client_info then
 			local data =
 			{
 				key=key,
@@ -851,7 +852,8 @@ function M.send_to_client(key, payload, client_unique_id)
 	end
 end
 
-function M.send_to_server(key, payload)	
+function M.send_to_server(key, payload)
+	print("Send to server", key)
 	if client_latest_server_info.id then
 		if current_state ~= M.STATE_SERVING or client_latest_server_info.id ~= server_current_info.id then
 			local server_info = client_known_server_info[client_latest_server_info.id]
