@@ -1,4 +1,12 @@
 {
+  "AC": 17,
+  "Abilities": [
+    "Torrent"
+  ],
+  "HP": 122,
+  "Hidden Ability": "Rain Dish",
+  "Hit Dice": 12,
+  "MIN LVL FD": 10,
   "Moves": {
     "Level": {
       "14": [
@@ -63,34 +71,27 @@
       100
     ]
   },
-  "index": 9,
-  "Abilities": [
-    "Torrent"
+  "SR": 13.0,
+  "Skill": [
+    "Survival"
   ],
+  "Ssp": 30,
   "Type": [
     "Water"
   ],
-  "SR": 13.0,
-  "AC": 17,
-  "Hit Dice": 12,
-  "HP": 122,
   "WSp": 30,
-  "Ssp": 30,
   "attributes": {
-    "STR": 17,
-    "DEX": 14,
+    "CHA": 10,
     "CON": 19,
+    "DEX": 14,
     "INT": 6,
-    "WIS": 14,
-    "CHA": 10
+    "STR": 17,
+    "WIS": 14
   },
-  "MIN LVL FD": 10,
+  "index": 9,
   "saving_throws": [
     "CON",
     "STR"
   ],
-  "Skill": [
-    "Survival"
-  ],
-  "Hidden Ability": "Rain Dish"
+  "size": "Medium"
 }

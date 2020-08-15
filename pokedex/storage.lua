@@ -134,7 +134,6 @@ function M.get_copy(id)
 		log.error(e)
 		return nil
 	end
-	
 end
 
 local function get(id)
@@ -254,6 +253,16 @@ end
 function M.set_pokemon_current_hp(id, hp)
 	local p = get(id)
 	p.hp.current = hp
+	M.save()
+end
+
+function M.get_pokemon_temp_hp(id)
+	return get(id).hp.temp or 0
+end
+
+function M.set_pokemon_temp_hp(id, temp_hp)
+	local p = get(id)
+	p.hp.temp = math.max(0, temp_hp)
 	M.save()
 end
 

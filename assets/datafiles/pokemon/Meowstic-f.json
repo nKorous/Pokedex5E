@@ -1,32 +1,42 @@
 {
+  "AC": 15,
+  "Abilities": [
+    "Keen Eye",
+    "Infiltrator"
+  ],
+  "Climbing Speed": 20,
+  "HP": 58,
+  "Hidden Ability": "Competitive",
+  "Hit Dice": 10,
+  "MIN LVL FD": 5,
   "Moves": {
     "Level": {
-      "6": [
-        "Psybeam",
-        "Fake Out",
-        "Disarming Voice"
-      ],
       "10": [
         "Psyshock",
-        "Charm",
-        "Miracle Eye",
-        "Reflect"
+        "Charge Beam",
+        "Shadow Ball",
+        "Extrasensory"
       ],
       "14": [
         "Psychic",
         "Role Play",
-        "Imprison"
+        "Signal Beam"
       ],
       "18": [
         "Sucker Punch",
-        "Misty Terrain",
-        "Quick Guard"
+        "Future Sight",
+        "Stored Power"
+      ],
+      "6": [
+        "Psybeam",
+        "Fake Out",
+        "Disarming Voice"
       ]
     },
     "Starting Moves": [
-      "Helping Hand",
       "Leer",
-      "Mean Look",
+      "Magical Leaf",
+      "Me First",
       "Scratch",
       "Covet",
       "Confusion",
@@ -72,38 +82,29 @@
       100
     ]
   },
-  "index": 678,
-  "Abilities": [
-    "Keen Eye",
-    "Infiltrator"
-  ],
-  "Type": [
-    "Psychic"
-  ],
   "SR": 9.0,
-  "AC": 15,
-  "Hit Dice": 10,
-  "HP": 58,
-  "WSp": 25,
   "Senses": [
     "Darkvision 60ft"
-  ],
-  "attributes": {
-    "STR": 12,
-    "DEX": 17,
-    "CON": 14,
-    "INT": 6,
-    "WIS": 16,
-    "CHA": 14
-  },
-  "MIN LVL FD": 5,
-  "saving_throws": [
-    "WIS"
   ],
   "Skill": [
     "Insight",
     "Perception"
   ],
-  "Hidden Ability": "Competitive",
-  "Climbing Speed": 20
+  "Type": [
+    "Psychic"
+  ],
+  "WSp": 25,
+  "attributes": {
+    "CHA": 14,
+    "CON": 14,
+    "DEX": 17,
+    "INT": 6,
+    "STR": 12,
+    "WIS": 16
+  },
+  "index": 678,
+  "saving_throws": [
+    "WIS"
+  ],
+  "size": "Small"
 }

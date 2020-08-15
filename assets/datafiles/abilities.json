@@ -102,10 +102,10 @@
     "Description": "Once per short rest, this Pokémon can choose a different damage type for one of their normal attacks."
   },
   "Drizzle": {
-    "Description": "A constant light rain forms on the battlefield when the Pokémon enters into combat. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
+    "Description": "When this Pokémon enters an outside battle, the weather immediately changes to light rain for 5 rounds. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
   },
   "Drought": {
-    "Description": "When this Pokémon enters an outside battle, the weather immediately changes to harsh sunlight. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
+    "Description": "When this Pokémon enters an outside battle, the weather immediately changes to harsh sunlight for 5 rounds. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
   },
   "Dry Skin": {
     "Description": "At the end of each of this Pokémon's turns, it takes an amount of damage equal to its proficiency modifier in harsh sunlight, or heals for the same amount during rain."
@@ -138,7 +138,7 @@
     "Description": "Any grass-type ally within 15 feet of this Pokémon is immune to new status effects."
   },
   "Forecast": {
-    "Description": "This Pokémon changes form with the weather. In rain it becomes water-type, in harsh sunlight it becomes fire-type, in cold and snowy conditions it becomes ice-type. In all other conditions it is normal-type. Its STAB, resistance, immunities, and vulnerabilities change to match the form it takes.v"
+    "Description": "This Pokémon changes form with the weather. In rain it becomes water-type, in harsh sunlight it becomes fire-type, in cold and snowy conditions it becomes ice-type. In all other conditions it is normal-type. Its STAB, resistance, immunities, and vulnerabilities change to match the form it takes."
   },
   "Forewarn": {
     "Description": "When this Pokémon enters battle, it selects a target to reveal the move it knows with the most damage output. In the case of a tie, the target can choose which move it reveals."
@@ -198,7 +198,7 @@
     "Description": "This Pokémon knows Hydro Pump as a fifth move. The move is forgotten if it takes any other form."
   },
   "Hyper Cutter": {
-    "Description": "This Pokémon’s ability modifiers cannot be decreased by an opponent’s moves."
+    "Description": "This Pokémon’s attack or damage bonuses cannot be decreased by an opponent’s moves."
   },
   "Ice Body": {
     "Description": "While it is snowing or hailing, this Pokémon heals for an amount of HP equal to its proficiency modifier at the end of each of its turns."
@@ -351,10 +351,10 @@
     "Description": "If this Pokémon is poisoned, the amount of damage dealt by the poison heals the Pokémon instead."
   },
   "Poison Point": {
-    "Description": "On melee attacks made by this Pokémon, roll a d10 on a hit. On a result of a 10, the target is poisoned."
+    "Description": "When this Pokémon is hit with a melee attack, roll a 1d4. On a result of 4, the attacker takes an amount of poison damage equal to this Pokémon’s proficiency modifier."
   },
   "Poison Touch": {
-    "Description": "When this Pokémon is hit with a melee attack, roll a 1d4. On a result of 4, the attacker takes an amount of poison damage equal to this Pokémon’s proficiency modifier."
+    "Description": "On melee attacks made by this Pokémon, roll a d10 on a hit. On a result of a 10, the target is poisoned."
   },
   "Power Construct": {
     "Description": "When Zygarde is reduced to less than half of its maximum HP, it evolves to the next form and regains all hit points."
@@ -408,7 +408,7 @@
     "Description": "This Pokémon’s speed is doubled in desert terrain, or during a Sandstorm."
   },
   "Sand Stream": {
-    "Description": "A constant Sandstorm covers the battlefield when this Pokémon enters a battle. This Pokémon may use the move Sandstorm as a bonus action. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
+    "Description": "When this Pokémon enters an outside battle, the weather immediately changes to a Sandstorm for 5 rounds. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
   },
   "Sand Veil": {
     "Description": "This Pokémon’s AC increases by 2 in desert terrain, or during a Sandstorm."
@@ -423,7 +423,7 @@
     "Description": "The DC to avoid a negative status condition from this Pokémon is increased by 1."
   },
   "Shadow Tag": {
-    "Description": "If this Pokémon is active, an opponent cannot flee or be switched out."
+    "Description": "Wild Pokémon cannot flee from this Pokémon if it is active in battle."
   },
   "Shed Skin": {
     "Description": "If this Pokémon is affected by a negative status ailment, they can roll a d4 at the end of each of their turns. On a result of 4, they are cured."
@@ -456,7 +456,7 @@
     "Description": "This Pokémon's AC is increased by 2 in arctic conditions, or when it is snowing or hailing."
   },
   "Snow Warning": {
-    "Description": "When this Pokémon enters an outside battle, the weather immediately changes to hail. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
+    "Description": "When this Pokémon enters an outside battle, the weather immediately changes to hail for 5 rounds. In the case of another Pokémon with a similar weather ability, the tie goes to the Pokémon with the highest DEX score."
   },
   "Solar Power": {
     "Description": "Damage rolls for this Pokémon get an additional +2 during harsh sunlight."
@@ -576,10 +576,10 @@
     "Description": "This Pokémon cannot be put to sleep."
   },
   "Volt Absorb": {
-    "Description": "Electric type moves do not damage this Pokémon. Instead, half of any electric damage done is absorbed, restoring the Pokémon's HP."
+    "Description": "Electric type damage does not damage this Pokémon. Instead, half of any electric damage done is absorbed, restoring the Pokémon's HP."
   },
   "Water Absorb": {
-    "Description": "Water type moves do not damage this Pokémon. Instead, half of any water damage done is absorbed, restoring the Pokémon's HP."
+    "Description": "Water type damage does not damage this Pokémon. Instead, half of any water damage done is absorbed, restoring the Pokémon's HP."
   },
   "Water Veil": {
     "Description": "This Pokémon is immune to burning."

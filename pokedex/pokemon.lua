@@ -330,12 +330,18 @@ function M.get_all_speed(pokemon)
 	if M.have_feat(pokemon, "Mobile") then
 		mobile_feet = 10
 	end
-	local w = pokedex.get_walking_speed(species) 
-	local s = pokedex.get_swimming_speed(species) 
-	local c = pokedex.get_climbing_speed(species) 
-	local f = pokedex.get_flying_speed(species) 
-	return {Walking= w ~= 0 and w+mobile_feet or w, Swimming=s ~= 0 and s+mobile_feet or s, 
-	Flying= f ~= 0 and f+mobile_feet or f, Climbing=c ~= 0 and c+mobile_feet or c}
+	local w = pokedex.get_walking_speed(species)
+	local s = pokedex.get_swimming_speed(species)
+	local c = pokedex.get_climbing_speed(species)
+	local f = pokedex.get_flying_speed(species)
+	local b = pokedex.get_burrow_speed(species)
+	return {
+		Walking= w ~= 0 and w+mobile_feet or w,
+		Swimming=s ~= 0 and s+mobile_feet or s, 
+		Flying= f ~= 0 and f+mobile_feet or f,
+		Climbing=c ~= 0 and c+mobile_feet or c,
+		Burrow=b ~= 0 and b+mobile_feet or b
+	}
 end
 
 function M.set_current_hp(pokemon, hp)
@@ -344,6 +350,14 @@ end
 
 function M.get_current_hp(pokemon)
 	return pokemon.hp.current
+end
+
+function M.set_temp_hp(pokemon, temp_hp)
+	pokemon.hp.temp = math.max(0, temp_hp)
+end
+
+function M.get_temp_hp(pokemon)
+	return pokemon.hp.temp or 0
 end
 
 function M.set_max_hp(pokemon, hp)
@@ -471,8 +485,33 @@ function M.set_move(pokemon, new_move, index)
 	pokemon.moves[new_move] = {pp=pp, index=index}
 end
 
-function M.get_moves(pokemon)
-	return pokemon.moves
+function M.get_moves(pokemon, options)
+	local append_known_to_all = false
+	if options ~= nil then
+		append_known_to_all = options.append_known_to_all == true
+	end
+
+	if append_known_to_all then
+		local ret = {}
+		local count = 1
+		for k,v in pairs(pokemon.moves) do
+			if not movedex.is_move_known_to_all(k) then -- Pokemon has this move in its move set, but ALL Pokemon know this move. We'll ignore this move for now, and tack it on later so it shows up at the end.
+				ret[k] = v
+				count = count + 1
+			end
+		end
+		for k,v in pairs(movedex.get_known_to_all_moves()) do
+			ret[k] = {pp=movedex.get_move_pp(k), index=count}
+			count = count + 1
+		end
+		return ret
+	else
+		return pokemon.moves
+	end
+end
+
+function M.get_size(pokemon)
+	return pokedex.get_pokemon_size(M.get_current_species(pokemon))
 end
 
 function M.get_nature(pokemon)
@@ -557,20 +596,31 @@ function M.get_skills(pokemon)
 end
 
 function M.get_move_pp(pokemon, move)
-	return pokemon.moves[move].pp
+	local pokemon_move = pokemon.moves[move]
+	if pokemon_move then
+		-- If the move somehow became nil (which can happen in corrupted data cases due to issue https://github.com/Jerakin/Pokedex5E/issues/407),
+		-- reset it to the move's base pp to avoid exceptions in other places. Ideally the corruption would never happen in the first place, but
+		-- some save data is already corrupt.
+		local pp = pokemon_move.pp
+		if pp == nil then
+			M.reset_move_pp(pokemon, move)
+			pp = pokemon.moves[move].pp
+		end
+		return pp
+	end
+	-- The pokemon doesn't actually "know" this move - likely a "known to all" move. Return pp of the move itself
+	return movedex.get_move_pp(move)
 end
 
 function M.get_move_pp_max(pokemon, move)
-	local _, pp_extra = M.have_feat(pokemon, "Tireless")
 	local move_pp = movedex.get_move_pp(move)
 	if type(move_pp) == "string" then
-		return 99
+		-- probably move with Unlimited uses, i.e. Struggle
+		return move_pp
+	else
+		local _, pp_extra = M.have_feat(pokemon, "Tireless")
+		return movedex.get_move_pp(move) + pp_extra
 	end
-	return movedex.get_move_pp(move) + pp_extra
-end
-
-function M.get_move_index(pokemon, move)
-	return pokemon.moves[move].index
 end
 
 function M.reset(pokemon)
@@ -598,25 +648,50 @@ function M.get_resistances(pokemon)
 	return pokedex.get_pokemon_resistances(M.get_current_species(pokemon))
 end
 
-function M.decrease_move_pp(pokemon, move)
-	local move_pp = M.get_move_pp(pokemon, move)
-	if type(move_pp) == "string" then
-		return
+function M.can_decrease_move_pp(pokemon, move)
+	local pokemon_move = pokemon.moves[move]
+	if pokemon_move ~= nil then
+		local move_pp = M.get_move_pp(pokemon, move)
+		if type(move_pp) == "string" then
+			return false
+		end
+		return move_pp > 0
 	end
-	local pp = math.max(move_pp - 1, 0)
-	pokemon.moves[move].pp = pp
-	return pp
+	return false
+end
+
+function M.decrease_move_pp(pokemon, move)
+	if M.can_decrease_move_pp(pokemon, move) then
+		local move_pp = M.get_move_pp(pokemon, move)
+		local pp = math.max(move_pp - 1, 0)
+		pokemon.moves[move].pp = pp
+		return pp
+	end
+	return nil
+end
+
+function M.can_increase_move_pp(pokemon, move)
+	local pokemon_move = pokemon.moves[move]
+	if pokemon_move ~= nil then
+		local move_pp = M.get_move_pp(pokemon, move)
+		if type(move_pp) == "string" then
+			return false
+		end
+		local max_pp = M.get_move_pp_max(pokemon, move)
+		return move_pp < max_pp
+	end
+	return false
 end
 
 function M.increase_move_pp(pokemon, move)
-	local move_pp = M.get_move_pp(pokemon, move)
-	if type(move_pp) == "string" then
-		return
+	if M.can_increase_move_pp(pokemon, move) then
+		local move_pp = M.get_move_pp(pokemon, move)
+		local max_pp = M.get_move_pp_max(pokemon, move)
+		local pp = math.min(move_pp + 1, max_pp)
+		pokemon.moves[move].pp = pp
+		return pp
 	end
-	local max_pp = M.get_move_pp_max(pokemon, move)
-	local pp = math.min(move_pp + 1, max_pp)
-	pokemon.moves[move].pp = pp
-	return pp
+	return nil
 end
 
 
@@ -785,82 +860,97 @@ local function level_index(level)
 	end
 end
 
+
+local function max_ignore_zero(value, other)
+	return other and other ~= 0 and math.max(value, other) or value
+end
+
 local function get_damage_mod_stab(pokemon, move)
-	local modifier
-	local damage
-	local ab
-	local stab = false
-	local stab_damage = 0
-	local total = M.get_total_attribute
+	local move_power = -9999 -- Will be determined by ability mods later, or set to 0
+	local dice
+	local stab_damage
 	local floored_mod
+	local extra_damage = 0
+	local trainer_pokemon_type_damage
+	local type_master_STAB
 	local trainer_stab = 0
-	-- Pick the highest of the moves power
 	local total = M.get_attributes(pokemon)
+	local index = level_index(M.get_current_level(pokemon))
+	local is_attack = (move.atk == true or move.auto_hit == true) or move.Save ~= nil and move.Damage ~= nil
+
+	-- Pick the highest of the moves powers
 	if move["Move Power"] then
 		for _, mod in pairs(move["Move Power"]) do
 			if total[mod] then
-				local floored_mod = math.floor((total[mod] - 10) / 2)
-				if modifier then
-					if floored_mod > modifier then
-						modifier = floored_mod
-					end
-				else
-					modifier = floored_mod
-				end
+				local this_bonus = math.floor((total[mod] - 10) / 2)
+				move_power = math.max(move_power, this_bonus)
 			elseif mod == "Any" then
-				print("ANY!")
 				local max = 0
 				for k, v in pairs(total) do
 					max = math.max(v, max)
 				end
-				modifier = math.floor((max - 10) / 2)
+				move_power = math.floor((max - 10) / 2)
 			end
 		end
+	else
+		move_power = 0
 	end
-	
-	modifier = modifier ~= nil and modifier or 0
 
-	for _, t in pairs(M.get_type(pokemon)) do
-		trainer_stab = trainer_stab + trainer.get_type_master_STAB(t)
-		if move.Type == t and move.stab then
-			stab_damage = M.get_STAB_bonus(pokemon) + trainer.get_all_levels_STAB() + trainer.get_STAB(t)
-			stab = true
+	-- Figure out the STAB and Trainer Pokemon Type Damage
+	if is_attack then
+		for _, t in pairs(M.get_type(pokemon)) do
+			-- Figure out the highest value of the "pokemon_type_damage_bonus
+			trainer_pokemon_type_damage = max_ignore_zero(trainer.get_pokemon_type_damage_bonus(t), trainer_pokemon_type_damage)
+
+			type_master_STAB = max_ignore_zero(trainer.get_type_master_STAB(t), type_master_STAB)
+			if move.Type == t or (trainer.get_always_use_STAB(t) and move.Type ~= "Typeless") then
+				stab_damage = M.get_STAB_bonus(pokemon)
+				trainer_stab = trainer.get_STAB(move.Type)
+			end
 		end
+		local apply_stab = stab_damage ~= nil
+		type_master_STAB = apply_stab and (type_master_STAB or 0) or 0
+		local all_level_stab = apply_stab and trainer.get_all_levels_STAB() or 0
+		local trainer_damage = trainer_stab + type_master_STAB + all_level_stab + trainer.get_damage() + (trainer_pokemon_type_damage or 0) + trainer.get_move_type_damage_bonus(move.Type)
+		extra_damage = extra_damage + (stab_damage or 0) + trainer_damage
 	end
-	if stab then
-		stab_damage = stab_damage + trainer_stab
-	end
-	
-	local index = level_index(M.get_current_level(pokemon))
-	
+
 	local move_damage = move.Damage
 	if move_damage then
+		-- Some moves uses 5x1d4
 		local times_prefix = ""
 		if move_damage[index].times then
 			times_prefix = move_damage[index].times .. "x"
 		end
 
-		damage = times_prefix .. move_damage[index].amount .. "d" .. move_damage[index].dice_max
-		local extra = stab_damage + (move_damage[index].modifier or 0) + (move_damage[index].level and M.get_current_level(pokemon) or 0) + trainer.get_damage()
+		-- This is the dice representation i.e. "1d6"
+		dice = times_prefix .. move_damage[index].amount .. "d" .. move_damage[index].dice_max
+		
+		-- Add LEVEL to damage if applicable
+		extra_damage = extra_damage + (move_damage[index].level and M.get_current_level(pokemon) or 0)
+
+		-- Add move power
 		if move_damage[index].move then
-			extra = extra + modifier + trainer.get_move()
+			extra_damage = extra_damage + move_power + trainer.get_move()
 		end
 
-		if extra ~= 0 then
+		-- Combine the different parts into one string
+		if extra_damage ~= 0 then
 			local symbol = ""
-			if extra > 0 then
+			if extra_damage > 0 then
 				symbol = "+"
 			end
-			damage = damage .. symbol .. extra
+			dice = dice .. symbol .. extra_damage
 		end
 	end
-	return damage, modifier, stab
+	return dice, move_power, stab_damage
 end	
 
 function M.get_move_data(pokemon, move_name)
 	local move = movedex.get_move_data(move_name)
 	local dmg, mod, stab = get_damage_mod_stab(pokemon, move)
-	
+	local requires_save = move.Save ~= nil
+
 	local move_data = {}
 	move_data.damage = dmg
 	move_data.stab = stab
@@ -873,10 +963,10 @@ function M.get_move_data(pokemon, move_name)
 	move_data.power = move["Move Power"]
 	move_data.save = move.Save
 	move_data.time = move["Move Time"]
-	if move.ab then
+	if move.atk == true and not move.autohit then
 		move_data.AB = mod + M.get_proficency_bonus(pokemon) + trainer.get_attack_roll() + trainer.get_move_type_attack_bonus(move_data.type) + trainer.get_pokemon_type_attack_bonus(M.get_type(pokemon))
 	end
-	if move_data.save then
+	if requires_save then
 		move_data.save_dc = 8 + mod + M.get_proficency_bonus(pokemon)
 	end
 

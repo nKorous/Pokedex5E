@@ -15,10 +15,10 @@ local movedex = require "pokedex.moves"
 local selected_item
 local flow = require "utils.flow"
 local gooey_buttons = require "utils.gooey_buttons"
-local tracking_id = require "utils.tracking_id"
 local gui_utils = require "utils.gui"
-
-local STATS = {"STR", "DEX", "CON", "INT", "WIS", "CHA"}
+local constants = require "utils.constants"
+local screens = require "utils.screens"
+local messages = require "utils.messages"
 
 local POKEMON_SPECIES_TEXT_SCALE = vmath.vector3(1)
 
@@ -229,9 +229,11 @@ local function redraw_moves(self)
 	local index = 1
 	for move, data in pairs(_pokemon.get_moves(self.pokemon)) do
 		if move_buttons_list[index] then
-			local move_node = move_buttons_list[data.index].text
-			local icon_node = move_buttons_list[data.index].icon
+			local _index = data.index
+			local move_node = move_buttons_list[_index].text
+			local icon_node = move_buttons_list[_index].icon
 			
+			move_buttons_list[data.index].move_name = move
 			gui.set_text(move_node, move:upper())
 			gui.set_scale(move_node, vmath.vector3(0.8))
 			gui_utils.scale_text_to_fit_size(move_node)
@@ -286,7 +288,7 @@ local function redraw(self)
 	local attributes = _pokemon.get_attributes(self.pokemon)
 	local increased = _pokemon.get_increased_attributes(self.pokemon)
 	local old_increased = _pokemon.get_increased_attributes(stored_pokemon)
-	for _, stat in pairs(STATS) do
+	for _, stat in pairs(constants.ABILITY_LIST) do
 		local n = gui.get_node("change_pokemon/asi/" .. stat .. "_MOD")
 		local stat_num = gui.get_node("change_pokemon/asi/" .. stat)
 
@@ -360,7 +362,7 @@ local function increase(self, stat)
 	local increased = _pokemon.get_increased_attributes(self.pokemon)
 	local m = attributes[stat] + increased[stat] + (nature_attri[stat] or 0) + added[stat]
 	if  m < max[stat] then
-		if monarch.top() == hash("add") then
+		if monarch.top() == screens.ADD then
 			_pokemon.set_attribute(self.pokemon, stat, added[stat] + 1)
 		else
 			_pokemon.set_increased_attribute(self.pokemon, stat, increased[stat] + 1)
@@ -376,7 +378,7 @@ local function decrease(self, stat)
 	local nature_attri = natures.get_nature_attributes(_pokemon.get_nature(self.pokemon))
 	local m = attributes[stat] + increased[stat] + (nature_attri[stat] or 0) + added[stat]
 	if m > 0 then
-		if monarch.top() == hash("add") then
+		if monarch.top() == screens.ADD then
 			_pokemon.set_attribute(self.pokemon, stat, added[stat] - 1)
 		else
 			_pokemon.set_increased_attribute(self.pokemon, stat, increased[stat] - 1)
@@ -386,12 +388,14 @@ local function decrease(self, stat)
 end
 
 local function pick_move(self)
-	monarch.show("moves_scrollist", {}, {species=_pokemon.get_current_species(self.pokemon), level=_pokemon.get_current_level(self.pokemon), current_moves=_pokemon.get_moves(self.pokemon), message_id="move", sender=msg.url()})
+	self.return_to_screen = monarch.top()
+	local move_to_replace = move_buttons_list[self.move_button_index].move_name
+	monarch.show(screens.MOVES_SCROLLIST, {}, {species=_pokemon.get_current_species(self.pokemon), level=_pokemon.get_current_level(self.pokemon), pokemon=self.pokemon, current_moves=_pokemon.get_moves(self.pokemon, {append_known_to_all=true}), move_to_replace=move_to_replace, message_id=messages.MOVE, sender=msg.url()})
 end
 
 
 function M.init(self, pokemon)
-	msg.post(url.MENU, "hide")
+	msg.post(url.MENU, messages.HIDE)
 
 	self.list_items = {}
 	self.feats_data = {}
@@ -426,20 +430,20 @@ function M.init(self, pokemon)
 end
 
 function M.final(self)
-	msg.post(url.MENU, "show")
 	active_buttons = {}
 	move_buttons_list = {}
 	button.unregister()
 end
 
+
 function M.on_message(self, message_id, message, sender)
 	if message.item then
-		if message_id == hash("nature") then
+		if message_id == messages.NATURE then
 			_pokemon.set_nature(self.pokemon, message.item)
 			gui.set_text(gui.get_node("change_pokemon/txt_nature"), message.item)
 			gui.set_color(gui.get_node("change_pokemon/txt_nature"), gui_colors.HERO_TEXT)
 			M.update_hp_counter(self)
-		elseif message_id == hash("species") then
+		elseif message_id == messages.SPECIES then
 			if message.item == "" then
 				return
 			end
@@ -456,35 +460,37 @@ function M.on_message(self, message_id, message, sender)
 			genderized = g
 			set_gender_icon(gender)
 			if self.register_buttons_after_species then self.register_buttons_after_species(self) end
-		elseif message_id == hash("evolve") then
+		elseif message_id == messages.EVOLVE then
 			flow.start(function()
 				flow.until_true(function() return not monarch.is_busy() end)
-				monarch.show("are_you_sure", nil, {title="Evolve at level ".. _pokemon.get_current_level(self.pokemon) .. "?", text="This will automatically save and exit to Party", sender=msg.url(), data=message.item, id="evolve"})
+				monarch.show(screens.ARE_YOU_SURE, nil, {title="Evolve at level ".. _pokemon.get_current_level(self.pokemon) .. "?", text="This will automatically save and exit to Party", sender=msg.url(), data=message.item, id="evolve"})
 			end)
-		elseif message_id == hash("abilities") then
+		elseif message_id == messages.ABILITIES then
 			_pokemon.add_ability(self.pokemon, message.item)
-		elseif message_id == hash("feats") then
+		elseif message_id == messages.FEATS then
 			_pokemon.add_feat(self.pokemon, message.item)
-		elseif message_id == hash("item") then
+		elseif message_id == messages.ITEM then
 			_pokemon.set_held_item(self.pokemon, message.item)
 			gui.set_text(gui.get_node("change_pokemon/txt_item"), message.item:upper())
-		else
+		elseif message_id == messages.MOVE then
 			if message.item ~= "" then
 				local n = move_buttons_list[self.move_button_index].text
 				_pokemon.set_move(self.pokemon, message.item, self.move_button_index)
 				gui.set_text(n, message.item)
 				gui.set_color(n, movedex.get_move_color(message.item))
+				-- Get out of popups
+				monarch.show(self.return_to_screen, {clear=true})
 			end
 		end
 		redraw(self)
 	end
-	if message_id == hash("response") and message.response then
-		if message.id == "change_hp" then
+	if message_id == messages.RESPONSE and message.response then
+		if message.id == messages.CHANGE_HP then
 			_pokemon.set_max_hp(self.pokemon, _pokemon.get_max_hp(self.pokemon) + message.data)
 			_pokemon.set_max_hp_forced(self.pokemon, true)
 			_pokemon.set_current_hp(self.pokemon, _pokemon.get_current_hp(self.pokemon) + message.data)
 			M.update_hp_counter(self)
-		elseif message.id == "reset" then
+		elseif message.id == messages.RESET then
 			local d_max = _pokemon.get_defaut_max_hp(self.pokemon)
 			_pokemon.set_max_hp(self.pokemon, d_max)
 			_pokemon.set_max_hp_forced(self.pokemon, false)
@@ -511,12 +517,12 @@ local function add_ability(self)
 			table.insert(filtered, new_ability)
 		end
 	end
-	monarch.show("scrollist", {}, {items=filtered, message_id="abilities", sender=msg.url(), title="Pick Ability"})
+	monarch.show(screens.SCROLLIST, {}, {items=filtered, message_id=messages.ABILITIES, sender=msg.url(), title="Pick Ability"})
 end
 
 local function add_feat(self)
 	local a = utils.deep_copy(_feats.list)
-	monarch.show("scrollist", {}, {items=_feats.list, message_id="feats", sender=msg.url(), title="Pick Feat"})
+	monarch.show(screens.SCROLLIST, {}, {items=_feats.list, message_id=messages.FEATS, sender=msg.url(), title="Pick Feat"})
 end
 
 local function delete_ability(self, ability)
@@ -656,10 +662,6 @@ end
 function M.on_input(self, action_id, action)
 	button.on_input(action_id, action)
 	gooey.button("change_pokemon/btn_close", action_id, action, function()
-		gameanalytics.addDesignEvent {
-			eventId = "Navigation:Back",
-			value = tracking_id[monarch.top()]
-		}
 		monarch.back()
 	end, gooey_buttons.close_button)
 	if M.block then
@@ -683,7 +685,7 @@ function M.on_input(self, action_id, action)
 	end
 	gooey.button("change_pokemon/hp/btn_minus", action_id, action, function()
 		if _pokemon.have_ability(self.pokemon, "Paper Thin") then
-			monarch.show("info", nil, {text="Ability: Paper Thin\nThis Pokemon's max HP is always 1"})
+			monarch.show(screens.INFO, nil, {text="Ability: Paper Thin\nThis Pokemon's max HP is always 1"})
 			return
 		end
 		if _pokemon.get_max_hp_forced(self.pokemon) == true then
@@ -691,13 +693,13 @@ function M.on_input(self, action_id, action)
 			_pokemon.set_max_hp(self.pokemon, _pokemon.get_max_hp(self.pokemon) - 1)
 			M.update_hp_counter(self)
 		else
-			monarch.show("are_you_sure", nil, {title="Are you sure?", text="You will have to track it manually henceforth", sender=msg.url(), data=-1, id="change_hp"})
+			monarch.show(screens.ARE_YOU_SURE, nil, {title="Are you sure?", text="You will have to track it manually henceforth", sender=msg.url(), data=-1, id=messages.CHANGE_HP})
 		end
 	end, gooey_buttons.minus_button)
 
 	gooey.button("change_pokemon/hp/btn_plus", action_id, action, function()
 		if _pokemon.have_ability(self.pokemon, "Paper Thin") then
-			monarch.show("info", nil, {text="Ability: Paper Thin\nThis Pokemon's max HP is always 1"})
+			monarch.show(screens.INFO, nil, {text="Ability: Paper Thin\nThis Pokemon's max HP is always 1"})
 			return
 		end
 		if _pokemon.get_max_hp_forced(self.pokemon) then
@@ -705,7 +707,7 @@ function M.on_input(self, action_id, action)
 			_pokemon.set_max_hp(self.pokemon, _pokemon.get_max_hp(self.pokemon) + 1)
 			M.update_hp_counter(self)
 		else
-			monarch.show("are_you_sure", nil, {title="Are you sure?", text="You will have to track it manually henceforth", sender=msg.url(), data=1, id="change_hp"})
+			monarch.show(screens.ARE_YOU_SURE, nil, {title="Are you sure?", text="You will have to track it manually henceforth", sender=msg.url(), data=1, id=messages.CHANGE_HP})
 		end
 	end, gooey_buttons.plus_button)
 	
@@ -781,12 +783,12 @@ function M.on_input(self, action_id, action)
 	end
 	if M.config[hash("change_pokemon/nature")].active then
 		gooey.button("change_pokemon/btn_nature", action_id, action, function()
-			monarch.show("natures_scrollist", {}, {items=natures.list, message_id="nature", sender=msg.url()})
+			monarch.show(screens.NATURES_SCROLLIST, {}, {items=natures.list, message_id=messages.NATURE, sender=msg.url()})
 		end)
 	end
 	if M.config[hash("change_pokemon/held_item")].active then
 		gooey.button("change_pokemon/btn_item", action_id, action, function()
-			monarch.show("scrollist", {}, {items=items.all, message_id="item", sender=msg.url(), title="Pick your Item"})
+			monarch.show(screens.SCROLLIST, {}, {items=items.all, message_id=messages.ITEM, sender=msg.url(), title="Pick your Item"})
 		end)
 		gooey.button("change_pokemon/btn_delete_item", action_id, action, function()
 			_pokemon.set_held_item(self.pokemon, nil)
