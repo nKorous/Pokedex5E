@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You regenerate from the inside, healing some of your wounds. Heal yourself for hit points.",
+  "Description": "You regenerate from the inside, healing some of your wounds. Heal yourself for 2d6 + MOVE hit points.",
   "Duration": "Instantaneous",
   "Move Power": [
     "CON"

@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You put all your power into a strong and heavy fist attack. Make a melee attack, dealing fighting damage on a hit. Until the beginning of your next turn, you have disadvantage on all DEX saves and your speed is halved.",
+  "Description": "You put all your power into a strong and heavy fist attack. Make a melee attack, dealing 4d4 + MOVE fighting damage on a hit. Until the beginning of your next turn, you have disadvantage on all DEX saves and your speed is halved.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You fire out an extreme blast of pure electric energy at an opponent. Make a ranged attack against a foe in range, doing electric damage. If the natural attack roll is 15 or higher, the target is paralyzed.",
+  "Description": "You fire out an extreme blast of pure electric energy at an opponent. Make a ranged attack against a foe in range, doing 2d10 + MOVE electric damage. If the natural attack roll is 15 or higher, the target is paralyzed.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

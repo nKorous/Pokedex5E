@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike out at an enemy creature with your wings. Make a melee attack roll, doing flying damage on a hit.",
+  "Description": "You strike out at an enemy creature with your wings. Make a melee attack roll, doing 1d10 + MOVE flying damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

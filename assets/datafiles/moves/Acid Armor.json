@@ -21,7 +21,7 @@
       "move": false
     }
   },
-  "Description": "You are surrounded by a shield of thick acid for the duration. During this time, your AC increases by 2, and any creature that hits you with a melee attack must succeed on a CON save or take poison damage.",
+  "Description": "You are surrounded by a shield of thick acid for the duration. During this time, your AC increases by 2, and any creature that hits you with a melee attack must succeed on a CON save or take 1d6 poison damage.",
   "Duration": "1 minute, Concentration",
   "Move Power": [
     "CON"

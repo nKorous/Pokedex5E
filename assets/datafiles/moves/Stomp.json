@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You raise your feet up for a stomp attack. Make a melee attack roll against a target, doing normal damage on a hit. If the natural attack roll is 18 or more, the target flinches.",
+  "Description": "You raise your feet up for a stomp attack. Make a melee attack roll against a target, doing 1d10 + MOVE normal damage on a hit. If the natural attack roll is 18 or more, the target flinches.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

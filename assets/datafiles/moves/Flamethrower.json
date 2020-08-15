@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You shoot a concentrated gout of flame in an 40 foot cone. Any creature caught in the cone must succeed on a DEX save against your Move DC, taking fire damage on a failure, or half damage on a success. Any creature that fails the save by more than 5 becomes burned.",
+  "Description": "You shoot a concentrated gout of flame in an 40 foot cone. Any creature caught in the cone must succeed on a DEX save against your Move DC, taking 2d8 + MOVE fire damage on a failure, or half damage on a success. Any creature that fails the save by more than 5 becomes burned.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

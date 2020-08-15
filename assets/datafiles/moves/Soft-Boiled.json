@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "Heal a creature in range for hitpoints.",
+  "Description": "Heal a creature in range for 2d6 + MOVE hitpoints.",
   "Duration": "Instantaneous",
   "Move Power": [
     "CON",

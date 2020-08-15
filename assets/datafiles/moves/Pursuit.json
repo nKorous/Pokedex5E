@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "As a reaction, when a creature is fleeing or is switched out by their trainer, you may make a ranged attack roll against it, doing dark damage on a hit.",
+  "Description": "As a reaction, when a creature is fleeing or is switched out by their trainer, you may make a ranged attack roll against it, doing 1d6 + MOVE dark damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

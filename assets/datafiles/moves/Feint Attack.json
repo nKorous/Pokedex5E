@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You bring an opponent close and hit it with a sucker punch. Make a melee attack on an opponent, always with advantage, doing dark damage on a hit.",
+  "Description": "You bring an opponent close and hit it with a sucker punch. Make a melee attack on an opponent, always with advantage, doing 1d10 + MOVE dark damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

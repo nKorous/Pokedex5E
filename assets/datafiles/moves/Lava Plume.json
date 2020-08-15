@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You unleash an inferno of hot flames at all creatures in a 20 foot cone. Creatures in the blast must make a DEX save against your Move DC, taking fire damage on a failure, or half as much on a success. If any creature fails the saving throw by more than 5, the creature is burned.",
+  "Description": "You unleash an inferno of hot flames at all creatures in a 20 foot cone. Creatures in the blast must make a DEX save against your Move DC, taking 2d6 + MOVE fire damage on a failure, or half as much on a success. If any creature fails the saving throw by more than 5, the creature is burned.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

@@ -23,7 +23,7 @@
       "move": false
     }
   },
-  "Description": "Make a ranged attack on a creature, rolling on a hit. You attack with a barrage of ranged strikes equal to the number shown. Each projectile deals normal damage.",
+  "Description": "Make a ranged attack on a creature, rolling 1d4 on a hit. You attack with a barrage of ranged strikes equal to the number shown. Each projectile deals 1d4 normal damage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

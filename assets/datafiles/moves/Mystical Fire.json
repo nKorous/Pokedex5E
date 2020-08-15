@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You summon forth a pair of mystical flames that dance around a target, dealing damage. Make a ranged attack roll against a target, dealing fire damage on a hit. If the target is hit with this attack, any attack roll it makes before the end of its next turn is rolled at disadvantage.",
+  "Description": "You summon forth a pair of mystical flames that dance around a target, dealing damage. Make a ranged attack roll against a target, dealing 1d12 + MOVE fire damage on a hit. If the target is hit with this attack, any attack roll it makes before the end of its next turn is rolled at disadvantage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

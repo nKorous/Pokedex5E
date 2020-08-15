@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "A wheel of flame explodes out from you in a 10 foot radius. All creature in the area must succeed on a DEX save against your Move DC, taking fire damage on a fail and half as much on a save. If the user is frozen, this move can still be used, thawing out the creature during the attack",
+  "Description": "A wheel of flame explodes out from you in a 10 foot radius. All creature in the area must succeed on a DEX save against your Move DC, taking 1d10 + MOVE fire damage on a fail and half as much on a save. If the user is frozen, this move can still be used, thawing out the creature during the attack",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

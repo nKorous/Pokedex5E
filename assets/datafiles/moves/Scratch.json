@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You slash out at a creature in range. Make a melee attack, doing normal damage on a hit.",
+  "Description": "You slash out at a creature in range. Make a melee attack, doing 1d6 + MOVE normal damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

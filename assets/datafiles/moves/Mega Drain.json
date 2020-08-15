@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You attempt to drain the life force of a target. Make a ranged attack on a target, doing grass damage on a hit. Half of the damage dealt is restored to the user.",
+  "Description": "You attempt to drain the life force of a target. Make a ranged attack on a target, doing 1d6 + MOVE grass damage on a hit. Half of the damage dealt is restored to the user.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

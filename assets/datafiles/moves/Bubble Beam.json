@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You shoot a concentrated stream of bubbles in an 80 foot line, 5 feet wide. Any creature caught in the line must succeed on a DEX save against your Move DC, taking water damage on a failed save, and half as much on a success.",
+  "Description": "You shoot a concentrated stream of bubbles in an 80 foot line, 5 feet wide. Any creature caught in the line must succeed on a DEX save against your Move DC, taking 1d10 + MOVE water damage on a failed save, and half as much on a success.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

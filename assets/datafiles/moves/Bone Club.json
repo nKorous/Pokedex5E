@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike a creature with a club of bone, doing ground damage on a successful hit. If the natural attack roll is 18 or more, the target flinches.",
+  "Description": "You strike a creature with a club of bone, doing 1d10 + MOVE ground damage on a successful hit. If the natural attack roll is 18 or more, the target flinches.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "Your punches are imbued with electric energy. Make a melee attack on a target, doing electric damage on a hit. On a natural attack roll of 19 or 20, the target is paralyzed.",
+  "Description": "Your punches are imbued with electric energy. Make a melee attack on a target, doing 1d12 + MOVE electric damage on a hit. On a natural attack roll of 19 or 20, the target is paralyzed.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

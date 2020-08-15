@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike out with fire-infused fists. Make a melee attack roll, doing fire damage on a hit. On a natural attack roll of 19 or 20, the target is burned.",
+  "Description": "You strike out with fire-infused fists. Make a melee attack roll, doing 1d12 + MOVE fire damage on a hit. On a natural attack roll of 19 or 20, the target is burned.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

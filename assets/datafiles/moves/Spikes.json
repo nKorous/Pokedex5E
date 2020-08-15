@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You set a trap of spikes that hurts creature that come into battle. If a trainer is in range and switches out a creature, you can spend a reaction to make a ranged attack on the incoming creature with spikes that come out of the ground, doing ground damage on a hit.",
+  "Description": "You set a trap of spikes that hurts creature that come into battle. If a trainer is in range and switches out a creature, you can spend a reaction to make a ranged attack on the incoming creature with spikes that come out of the ground, doing 1d6 + MOVE ground damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

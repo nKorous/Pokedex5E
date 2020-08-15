@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike twice with two devastating kicks. Make two melee attack rolls, doing fighting damage on each successful hit.",
+  "Description": "You strike twice with two devastating kicks. Make two melee attack rolls, doing 1d6 + MOVE fighting damage on each successful hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

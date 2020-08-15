@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You fire a quick spurt of water at a creature in range. Make a ranged attack roll, doing water damage on a hit.",
+  "Description": "You fire a quick spurt of water at a creature in range. Make a ranged attack roll, doing 1d6 + MOVE water damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike out with a powerful and focused punch. Make a melee attack roll on an opponent, doing fighting damage on a hit. On a hit, this move automatically ends an opponent’s Light Screen, and bypasses Reflect with no effect.",
+  "Description": "You strike out with a powerful and focused punch. Make a melee attack roll on an opponent, doing 1d12 + MOVE fighting damage on a hit. On a hit, this move automatically ends an opponent’s Light Screen, and bypasses Reflect with no effect.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You send a gust of swirling wind that tears through an opponent. Make a ranged attack on an opponent, doing dragon damage on a hit. If the natural attack roll is 16 or higher, the opponent flinches.",
+  "Description": "You send a gust of swirling wind that tears through an opponent. Make a ranged attack on an opponent, doing 1d6 + MOVE dragon damage on a hit. If the natural attack roll is 16 or higher, the opponent flinches.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

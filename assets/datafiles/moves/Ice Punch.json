@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike out with ice-infused fists. Make a melee attack roll, doing ice damage on a hit. On a natural attack roll of 19 or 20, the target is frozen.",
+  "Description": "You strike out with ice-infused fists. Make a melee attack roll, doing 1d12 + MOVE ice damage on a hit. On a natural attack roll of 19 or 20, the target is frozen.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

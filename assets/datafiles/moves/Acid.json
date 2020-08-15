@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You create a stream of hot acid in a 30 foot cone, centered on you. Creatures caught in the cone must succeed on a DEX save, taking poison damage on a fail, and half as much on a success.",
+  "Description": "You create a stream of hot acid in a 30 foot cone, centered on you. Creatures caught in the cone must succeed on a DEX save, taking 1d6 + MOVE poison damage on a fail, and half as much on a success.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

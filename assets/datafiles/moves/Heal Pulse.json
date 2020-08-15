@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You emit a healing pulse that restores a target's HP. Choose a target in range (cannot be yourself). The target regains hit points.",
+  "Description": "You emit a healing pulse that restores a target's HP. Choose a target in range (cannot be yourself). The target regains 2d6 + MOVE hit points.",
   "Duration": "Instantaneous",
   "Move Power": [
     "CON",

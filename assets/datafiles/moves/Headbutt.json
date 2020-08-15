@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You really know how to use your head. Make a melee attack roll, doing normal damage on a hit. If the natural attack roll is 18 or more, the target falls prone.",
+  "Description": "You really know how to use your head. Make a melee attack roll, doing 1d12 + MOVE normal damage on a hit. If the natural attack roll is 18 or more, the target falls prone.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

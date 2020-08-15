@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "Your creature burrows underground, disappearing from view before striking from underneath a foe. When you activate this move, you burrow underground and remain there until your next turn. During this time, you cannot be the target of any attack. On your next turn, make a melee attack on a creature in range, with advantage, doing ground damage on a successful hit. If the target has Tremorsense, the attack is not rolled with advantage.",
+  "Description": "Your creature burrows underground, disappearing from view before striking from underneath a foe. When you activate this move, you burrow underground and remain there until your next turn. During this time, you cannot be the target of any attack. On your next turn, make a melee attack on a creature in range, with advantage, doing 2d6 + MOVE ground damage on a successful hit. If the target has Tremorsense, the attack is not rolled with advantage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

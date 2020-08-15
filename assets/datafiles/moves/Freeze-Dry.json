@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You unleash a freezing cold air that rapidly chills a creature in range. Make a ranged attack on an opponent, dealing ice damage on a hit. On a natural attack roll of 19 or 20, the target is frozen. This move deals super effective damage to water-type creatures.",
+  "Description": "You unleash a freezing cold air that rapidly chills a creature in range. Make a ranged attack on an opponent, dealing 1d12 + MOVE ice damage on a hit. On a natural attack roll of 19 or 20, the target is frozen. This move deals super effective damage to water-type creatures.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

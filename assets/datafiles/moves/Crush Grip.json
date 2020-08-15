@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You clasp your hands around an opponent for a crushing blow. Make a melee attack against a target, dealing normal damage on a hit. If the target is above 50% of its maximum health, add your proficiency bonus to the damage roll.",
+  "Description": "You clasp your hands around an opponent for a crushing blow.  Make a melee attack against a target, dealing 2d10 + MOVE normal damage on a hit. If the target is above 50% of its maximum health, add your proficiency bonus to the damage roll.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

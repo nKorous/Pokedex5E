@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You create a strong wind that batters a target in range. Make a ranged attack, doing flying damage on a hit.",
+  "Description": "You create a strong wind that batters a target in range. Make a ranged attack, doing 1d6 + MOVE flying damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

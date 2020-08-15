@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "A pitch black shockwave of dark energy rushes towards a target. Make a ranged attack roll, dealing dark damage on a hit. If the natural attack roll is 13 or more, the target rolls its next attack with disadvantage. If it activates a move that requires a saving throw, the target(s) have advantage on the roll.",
+  "Description": "A pitch black shockwave of dark energy rushes towards a target. Make a ranged attack roll, dealing 2d6 + MOVE dark damage on a hit. If the natural attack roll is 13 or more, the target rolls its next attack with disadvantage. If it activates a move that requires a saving throw, the target(s) have advantage on the roll.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX",

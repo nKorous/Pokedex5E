@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You stir up a blizzard of sharp petals that swirl around you. Any creature in a 30 ft circle, centered on you, must make a DEX save against your Move DC, taking grass damage on a failure, or half as much on a success.",
+  "Description": "You stir up a blizzard of sharp petals that swirl around you. Any creature in a 30 ft circle, centered on you, must make a DEX save against your Move DC, taking 2d8 + MOVE grass damage on a failure, or half as much on a success.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

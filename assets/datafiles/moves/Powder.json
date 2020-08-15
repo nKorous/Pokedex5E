@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You coat a creature in an explosive powder. If the target uses a fire-type move before the end of its next turn, the powder explodes and automatically deals typeless damage to the target.",
+  "Description": "You coat a creature in an explosive powder. If the target uses a fire-type move before the end of its next turn, the powder explodes and automatically deals 2d8+MOVE typeless damage to the target.",
   "Duration": "Instantaneous",
   "Move Power": [
     "CON"

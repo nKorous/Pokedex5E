@@ -25,7 +25,7 @@
       "times": 4
     }
   },
-  "Description": "You fire two projectiles at any creature you choose in range. They do not have to target the same creature. Each hit for normal damage. This move also targets creature during the invulnerable stages of Dig, Fly, Bounce, etc.",
+  "Description": "You fire two projectiles at any creature you choose in range. They do not have to target the same creature. Each hit for 1d4 normal damage. This move also targets creature during the invulnerable stages of Dig, Fly, Bounce, etc.",
   "Duration": "Instantaneous",
   "Move Time": "1 action",
   "PP": 10,

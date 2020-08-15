@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You deliver an electric shock to a target in range. Make a ranged attack, doing electric damage on a hit.",
+  "Description": "You deliver an electric shock to a target in range. Make a ranged attack, doing 1d6 + MOVE electric damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

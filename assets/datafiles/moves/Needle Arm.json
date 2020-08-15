@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "Your arms turn to jagged, thorny needles as you strike a foe. Make a melee attack on an opponent, dealing grass damage on a hit. If the natural attack roll is a 15 or more, the opponent flinches.",
+  "Description": "Your arms turn to jagged, thorny needles as you strike a foe. Make a melee attack on an opponent, dealing 1d10 + MOVE grass damage on a hit. If the natural attack roll is a 15 or more, the opponent flinches.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

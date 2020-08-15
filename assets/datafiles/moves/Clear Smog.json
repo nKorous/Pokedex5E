@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You throw a clump of special mud that has the power to remove all stat changes from a target. Make a ranged attack, dealing poison damage on a hit. On a hit, any stat changes affecting the target since the beginning of battle are reset.",
+  "Description": "You throw a clump of special mud that has the power to remove all stat changes from a target. Make a ranged attack, dealing 1d8 + MOVE poison damage on a hit. On a hit, any stat changes affecting the target since the beginning of battle are reset.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX",

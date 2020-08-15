@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You create a powerful wave that crashes down on an opponent in a 30ft cone, centered on you. Any creature caught in the blast must make a DEX saving throw, taking water damage and falling prone on a failure, or half as much without falling prone on a success.",
+  "Description": "You create a powerful wave that crashes down on an opponent in a 30ft cone, centered on you. Any creature caught in the blast must make a DEX saving throw, taking 2d8 + MOVE water damage and falling prone on a failure, or half as much without falling prone on a success.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

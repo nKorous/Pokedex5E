@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You shoot out a powerful vortex of air that shreds through opponents. Any creature caught in a 50 foot line, 5 feet wide, must make a DEX save against your Move DC, taking flying damage on a fail, and half as much on a save.",
+  "Description": "You shoot out a powerful vortex of air that shreds through opponents. Any creature caught in a 50 foot line, 5 feet wide, must make a DEX save against your Move DC, taking 4d4 + MOVE flying damage on a fail, and half as much on a save.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

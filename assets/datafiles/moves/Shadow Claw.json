@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike with a sharp claw made from shadows in range. Make a ranged attack, dealing ghost damage on a hit. This moves scores a critical hit on natural attack rolls of 19 and 20.",
+  "Description": "You strike with a sharp claw made from shadows in range. Make a ranged attack, dealing 1d12 + MOVE ghost damage on a hit. This moves scores a critical hit on natural attack rolls of 19 and 20.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

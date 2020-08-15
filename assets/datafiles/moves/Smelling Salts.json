@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You procure a handful of strong smelling salt, damaging an opponent's senses. Make a ranged attack against a target, dealing normal damage on a hit. If the target is paralyzed, double the dice roll for the damage.",
+  "Description": "You procure a handful of strong smelling salt, damaging an opponent's senses. Make a ranged attack against a target, dealing 1d12 + MOVE normal damage on a hit. If the target is paralyzed, double the dice roll for the damage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "CON"

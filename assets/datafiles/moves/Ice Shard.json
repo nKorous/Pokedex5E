@@ -21,7 +21,7 @@
       "move": false
     }
   },
-  "Description": "You flash freeze chunks of ice and quickly hurl them at an opponent. As a bonus action, you fire a shard of ice at an opponent in range, dealing ice damage on a hit.",
+  "Description": "You flash freeze chunks of ice and quickly hurl them at an opponent. As a bonus action, you fire a shard of ice at an opponent in range, dealing 1d4 ice damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

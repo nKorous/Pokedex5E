@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You exhale a wave of hot breath in a 15ft. cone. Creatures caught in the area must make a DEX save against your Move DC, taking fire damage on failure, or half as much on a success. If the creature fails the save by 5 or more, it is burned.",
+  "Description": "You exhale a wave of hot breath in a 15ft. cone. Creatures caught in the area must make a DEX save against your Move DC, taking 2d8 + MOVE fire damage on failure, or half as much on a success. If the creature fails the save by 5 or more, it is burned.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX",

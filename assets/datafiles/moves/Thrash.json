@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You thrash about wildly, doing several attacks without control. Make a melee attack roll, doing normal damage on a hit. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional normal damage. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of two additional hits. At the end of this attack, you become confused.",
+  "Description": "You thrash about wildly, doing several attacks without control. Make a melee attack roll, doing 1d10 + MOVE normal damage on a hit. After successfully hitting a target, roll a d4. On a result of 3 or 4, you may immediately hit again for an additional 1d10 normal damage. Continue this process until you fail to roll a 3 or 4 on the d4 roll, up to a maximum of two additional hits. At the end of this attack, you become confused.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

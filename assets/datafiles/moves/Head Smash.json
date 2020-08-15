@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You lower your head to deliver a dangerous headbutt. Make a melee attack, dealing rock damage on a hit. On a hit, the user takes 1/2 the damage dealt in typeless recoil.",
+  "Description": "You lower your head to deliver a dangerous headbutt. Make a melee attack, dealing 3d8 + MOVE rock damage on a hit. On a hit, the user takes 1/2 the damage dealt in typeless recoil.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

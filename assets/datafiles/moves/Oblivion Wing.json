@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You extend your wings and use a dark beam energy to absorb your opponent's life force. Make a range attack against an opponent, dealing flying damage on a hit, recovering your own hit points by the amount of damage dealt.",
+  "Description": "You extend your wings and use a dark beam energy to absorb your opponent's life force. Make a range attack against an opponent, dealing 2d6 + MOVE flying damage on a hit, recovering your own hit points by the amount of damage dealt.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

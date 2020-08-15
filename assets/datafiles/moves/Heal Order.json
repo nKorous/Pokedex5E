@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You summon forth your underlings to heal your wounds. Regain hit points.",
+  "Description": "You summon forth your underlings to heal your wounds. Regain 4d4 + MOVE hit points.",
   "Duration": "Instantaneous",
   "Move Power": [
     "CON"

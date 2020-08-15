@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You send an extremely powerful wave of psychic energy at an opponent in range. Make a ranged attack roll against an opponent, dealing psychic damage on a hit. The power of the move exhausts you, and your next attack is done at disadvantage. If your next attack requires an opponent saving throw, they have advantage.",
+  "Description": "You send an extremely powerful wave of psychic energy at an opponent in range. Make a ranged attack roll against an opponent, dealing 2d12 + MOVE psychic damage on a hit. The power of the move exhausts you, and your next attack is done at disadvantage. If your next attack requires an opponent saving throw, they have advantage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "WIS",

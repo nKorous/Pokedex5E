@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You smash an opponent with a fist as fast as a meteor strike. Make a melee attack against an opponent, doing steel damage on a hit. If the natural attack roll is 18 or higher, your next attack has advantage.",
+  "Description": "You smash an opponent with a fist as fast as a meteor strike. Make a melee attack against an opponent, doing 2d8 + MOVE steel damage on a hit. If the natural attack roll is 18 or higher, your next attack has advantage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

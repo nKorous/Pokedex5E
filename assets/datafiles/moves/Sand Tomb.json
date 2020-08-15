@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You attempt to summon a wave of sand that surrounds your opponent. Make a ranged attack roll. On a hit, the target takes ground damage and is restrained. At the beginning of each of its turns, it may attempt to escape with a STR save against your Move DC. While a creature is restrained, you may continue this move, as a bonus action, to do an automatic ground damage without having to make an attack roll.",
+  "Description": "You attempt to summon a wave of sand that surrounds your opponent. Make a ranged attack roll. On a hit, the target takes 1d4 + MOVE ground damage and is restrained. At the beginning of each of its turns, it may attempt to escape with a STR save against your Move DC. While a creature is restrained, you may continue this move, as a bonus action, to do an automatic 1d4 ground damage without having to make an attack roll.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

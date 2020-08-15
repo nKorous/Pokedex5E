@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You create a 40 foot line of freezing ice, 5 feet wide. Any creature caught in the line must succeed on a DEX save or take ice damage and be frozen.",
+  "Description": "You create a 40 foot line of freezing ice, 5 feet wide. Any creature caught in the line must succeed on a DEX save or take 1d10 + MOVE ice damage and be frozen.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

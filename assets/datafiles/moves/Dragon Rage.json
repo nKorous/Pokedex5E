@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You unleash a devastating flow of energy in a 100 foot long line, 5 feet wide. Each creature caught in the blast must make a DEX save against your Move DC, taking dragon damage on a fail, and half as much on a save.",
+  "Description": "You unleash a devastating flow of energy in a 100 foot long line, 5 feet wide. Each creature caught in the blast must make a DEX save against your Move DC, taking 2d10 + MOVE dragon damage on a fail, and half as much on a save.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR"

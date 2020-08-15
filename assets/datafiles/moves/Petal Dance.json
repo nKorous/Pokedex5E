@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You dance around, releasing a flurry of sharp leaf attacks against a creature in range. Make a ranged attack roll, dealing grass damage on a hit. On the following turn, you may choose to use this action again to hit automatically, but if you do, you become confused at the end of your turn.",
+  "Description": "You dance around, releasing a flurry of sharp leaf attacks against a creature in range. Make a ranged attack roll, dealing 1d10 + MOVE grass damage on a hit. On the following turn, you may choose to use this action again to hit automatically, but if you do, you become confused at the end of your turn.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX",

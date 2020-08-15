@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You hurl a hard egg at a creature that explodes on impact. Make a ranged attack on a creature, doing normal damage on a successful hit.",
+  "Description": "You hurl a hard egg at a creature that explodes on impact. Make a ranged attack on a creature, doing 4d4 + MOVE normal damage on a successful hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

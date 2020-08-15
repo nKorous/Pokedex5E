@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You draw in power from your held berry, releasing it into a ranged attack. Make a ranged attack, dealing damage on a hit. The type is dependant on what berry you are holding, according to the chart below: | Type | Berry| | Normal | Chilan | | Fire | Cherri, Occa | | Water | Chesto, Passho | | Electric | Pecha, Waccan | | Grass | Rawst, Rindo | | Ice | Aspear, Yache | | Fighting | Leppa, Chople | | Poison | Oran, Kebia | | Ground | Persim, Shucca | | Flying | Lum, Coba | | Psychic | Sitrus, Payapa | | Bug | Tanga | | Rock | Charti | | Ghost | Kasib | | Dragon | Haban | | Dark | Colbur | | Steel | Babiri, Razz | | Fairy | Roseli |",
+  "Description": "You draw in power from your held berry, releasing it into a ranged attack. Make a ranged attack, dealing 1d12 + MOVE damage on a hit. The type is dependant on what berry you are holding, according to the chart below:\n\n| Type  | Berry|\n|  Normal  | Chilan |\n|  Fire  | Cherri, Occa |\n|  Water  | Chesto, Passho |\n|  Electric  | Pecha, Waccan |\n|  Grass  | Rawst, Rindo |\n|  Ice  | Aspear, Yache |\n|  Fighting  | Leppa, Chople |\n|  Poison  | Oran, Kebia |\n|  Ground  | Persim, Shucca |\n|  Flying  | Lum, Coba |\n|  Psychic  | Sitrus, Payapa |\n|  Bug  | Tanga |\n|  Rock  | Charti |\n|  Ghost  | Kasib |\n|  Dragon  | Haban |\n|  Dark  | Colbur |\n|  Steel  | Babiri, Razz |\n|  Fairy  | Roseli |",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

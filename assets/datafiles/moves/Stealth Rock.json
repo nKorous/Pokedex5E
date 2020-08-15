@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You quickly summon a trap of sharp rocks that hurts a creature entering the battle. When a creature is switched into battle, you may use your reaction to make a ranged attack, dealing rock damage to the incoming creature on a hit.",
+  "Description": "You quickly summon a trap of sharp rocks that hurts a creature entering the battle. When a creature is switched into battle, you may use your reaction to make a ranged attack, dealing 1d8 + MOVE rock damage to the incoming creature on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

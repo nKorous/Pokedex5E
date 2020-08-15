@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You land on the ground to rest your body. Regain hit points, but lose your ground-type immunity until beginning of your next turn.",
+  "Description": "You land on the ground to rest your body. Regain 2d6 + MOVE hit points, but lose your ground-type immunity until beginning of your next turn.",
   "Duration": "1 round",
   "Move Power": [
     "CON"

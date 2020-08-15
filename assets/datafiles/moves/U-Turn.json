@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You lash out with a quick strike before you make a getaway. Make a melee attack, dealing bug damage on a hit. After this move is activated, a trainer must switch out the user as a free action.",
+  "Description": "You lash out with a quick strike before you make a getaway. Make a melee attack, dealing 1d12 + MOVE bug damage on a hit. After this move is activated, a trainer must switch out the user as a free action.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

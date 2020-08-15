@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You attempt to drench an opponent in poisonous liquid. Make a ranged attack on an opponent, dealing poison damage on a hit. If the target is already poisoned, double your Move modifier when adding damage.",
+  "Description": "You attempt to drench an opponent in poisonous liquid. Make a ranged attack on an opponent, dealing 1d10 + MOVE poison damage on a hit. If the target is already poisoned, double your Move modifier when adding damage.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX",

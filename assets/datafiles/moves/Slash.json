@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You slash out at a creature in range. Make a melee attack, doing normal damage on a hit. Slash results in a critical hit on 19s and 20s.",
+  "Description": "You slash out at a creature in range. Make a melee attack, doing 1d12 + MOVE normal damage on a hit. Slash results in a critical hit on 19s and 20s.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

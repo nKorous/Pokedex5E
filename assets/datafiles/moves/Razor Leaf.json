@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You send a razor sharp leaf at a creature in range at tremendous speed. Make a ranged attack roll, doing grass damage on a hit. Razor Leaf results in a critical hit on 19s and 20s",
+  "Description": "You send a razor sharp leaf at a creature in range at tremendous speed. Make a ranged attack roll, doing 1d8 + MOVE grass damage on a hit. Razor Leaf results in a critical hit on 19s and 20s",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

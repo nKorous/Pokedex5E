@@ -21,7 +21,7 @@
       "move": false
     }
   },
-  "Description": "You rush to attack with incredible speed. As a bonus action, you can immediately move up to 10ft and make a melee attack against a creature in range without taking an attack of opportunity, doing normal damage on a hit.",
+  "Description": "You rush to attack with incredible speed. As a bonus action, you can immediately move up to 10ft and make a melee attack against a creature in range without taking an attack of opportunity, doing 1d10 normal damage on a hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "DEX"

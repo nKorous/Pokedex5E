@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You lash out at a creature with a quick fang attack. Make a melee attack roll, doing normal damage on a hit. Hyper Fang scores a critical hit on 19 and 20. If the natural attack roll is 18 or more, the target flinches.",
+  "Description": "You lash out at a creature with a quick fang attack. Make a melee attack roll, doing 2d6 + MOVE normal damage on a hit. Hyper Fang scores a critical hit on 19 and 20. If the natural attack roll is 18 or more, the target flinches.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

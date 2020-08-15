@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You send a pair of steel gears at a target(s) in range. Make two ranged attacks, dealing steel damage with each hit.",
+  "Description": "You send a pair of steel gears at a target(s) in range. Make two ranged attacks, dealing 1d8 + MOVE steel damage with each hit.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

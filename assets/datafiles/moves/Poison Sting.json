@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You strike out at a creature with a poisonous sting. Make a melee attack roll against a target, doing poison damage on a hit. If the natural attack roll is 18 or more, the creature is poisoned.",
+  "Description": "You strike out at a creature with a poisonous sting. Make a melee attack roll against a target, doing 1d4 + MOVE poison damage on a hit. If the natural attack roll is 18 or more, the creature is poisoned.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

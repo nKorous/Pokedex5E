@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You send a concentrated beam of freezing ice at a single creature in range. Make a ranged attack roll, doing ice damage on a hit, and forcing the target to make a CON save against your Move DC or become frozen.",
+  "Description": "You send a concentrated beam of freezing ice at a single creature in range. Make a ranged attack roll, doing 2d8 + MOVE ice damage on a hit, and forcing the target to make a CON save against your Move DC or become frozen.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",

@@ -21,7 +21,7 @@
       "move": true
     }
   },
-  "Description": "You create a deafening, explosive sound that damages all creatures within 20 feet of you. Force any creature in range to make a CON save against your Move DC, taking normal damage on a failure, or half as much on a success.",
+  "Description": "You create a deafening, explosive sound that damages all creatures within 20 feet of you. Force any creature in range to make a CON save against your Move DC, taking 2d12 + MOVE normal damage on a failure, or half as much on a success.",
   "Duration": "Instantaneous",
   "Move Power": [
     "STR",
