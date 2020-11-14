@@ -21,8 +21,8 @@ local storage_settings = {}
 local initialized = false
 
 
-LOCATION_PC = 0
-LOCATION_PARTY = 1
+local LOCATION_PC = 0
+local LOCATION_PARTY = 1
 
 local function get_id(pokemon)
 	local m = md5.new()
@@ -49,8 +49,8 @@ end
 
 local function sort_on_index(a, b)
 	return function(a, b) 
-		local c = pokedex.get_index_number(a.species.current)
-		local d = pokedex.get_index_number(b.species.current)
+		local c = pokedex.get_index_number(_pokemon.get_current_species(a))
+		local d = pokedex.get_index_number(_pokemon.get_current_species(b))
 		return c < d  
 	end
 end
@@ -64,12 +64,12 @@ end
 
 
 local function sort_on_level(a, b)
-	return function(a, b) return a.level.current > b.level.current end
+	return function(a, b) return _pokemon.get_current_level(a) > _pokemon.get_current_level(b) end
 end
 
 
 local function sort_alphabetical(a, b)
-	return function(a, b) return a.species.current < b.species.current end
+	return function(a, b) return _pokemon.get_current_species(a) < _pokemon.get_current_species(b) end
 end
 
 
@@ -173,7 +173,10 @@ end
 local function get_party()
 	local p = {}
 	for id, _ in pairs(pokemon_by_location.party) do
-		table.insert(p, player_pokemon[id].species.current)
+		local pkmn = player_pokemon[id]
+		local species = _pokemon.get_current_species(pkmn)
+		local variant = _pokemon.get_variant(pkmn)
+		table.insert(p, {species=species,variant=variant})
 	end
 	return p
 end
@@ -184,6 +187,7 @@ function M.update_pokemon(pokemon)
 	if player_pokemon[id] then
 		player_pokemon[id] = pokemon
 	end
+	M.save()
 end
 
 
@@ -217,6 +221,7 @@ function M.release_pokemon(id)
 	counters.released = next(counters) ~= nil and counters.released + 1 or 1
 	profiles.update(profiles.get_active_slot(), counters)
 	profiles.set_party(get_party())
+	M.save()
 end
 
 
@@ -263,7 +268,7 @@ function M.save()
 	end
 end
 
-function M.upgrade_data(file_name, storage_data)
+local function upgrade_data(file_name, storage_data)
 	local version = storage_data and storage_data.version or 1
 
 	local LATEST_VERSION = 2
@@ -323,6 +328,14 @@ function M.upgrade_data(file_name, storage_data)
 		storage_data.version = LATEST_VERSION
 	end
 
+	-- Also loop through all our Pokemon and upgrade them. I don't really want to do this, but
+	-- there are several functions that assume the pokemon are already up-to-date early in the startup
+	-- process. Rather than try to find every instance of looking at pokemon data and ensuring they
+	-- are updated before use, we're just upgrading them all during initialization
+	for _,pkmn in pairs(storage_data.player_pokemon) do
+		needs_upgrade = _pokemon.upgrade_pokemon(pkmn) or needs_upgrade
+	end
+
 	return storage_data, needs_upgrade
 end
 
@@ -333,7 +346,7 @@ function M.load(profile)
 		local loaded = defsave.load(file_name)
 	end
 
-	local loaded_data, needs_save = M.upgrade_data(file_name, defsave.get(file_name, "storage_data"))
+	local loaded_data, needs_save = upgrade_data(file_name, defsave.get(file_name, "storage_data"))
 	storage_data = loaded_data
 
 	-- Extract everything we need from saved data
@@ -362,7 +375,10 @@ function M.init()
 	if not initialized then
 		local profile = profiles.get_active()
 		if profile then
-			M.load(profile)
+			local needs_save = M.load(profile)
+			if needs_save then
+				M.save()
+			end
 		end
 		initialized = true
 	end
@@ -375,8 +391,8 @@ function M.swap(pc_pokemon_id, party_pokemon_id)
 	local id
 
 	-- Update location id
-	pokemon_by_location.party[party_pokemon] = nil
-	pokemon_by_location.pc[party_pokemon] = true
+	pokemon_by_location.party[party_pokemon_id] = nil
+	pokemon_by_location.pc[party_pokemon_id] = true
 
 	pokemon_by_location.party[pc_pokemon_id] = true
 	pokemon_by_location.pc[pc_pokemon_id] = nil
@@ -389,6 +405,7 @@ function M.swap(pc_pokemon_id, party_pokemon_id)
 	party_pokemon.slot = nil
 
 	profiles.set_party(get_party())
+	M.save()
 end
 
 
@@ -401,6 +418,7 @@ function M.move_to_pc(pokemon_id)
 	-- Update location id
 	pokemon_by_location.party[pokemon_id] = nil
 	pokemon_by_location.pc[pokemon_id] = true
+	M.save()
 end
 
 
@@ -424,10 +442,18 @@ function M.move_to_party(pokemon_id)
 		-- Update location id
 		pokemon_by_location.party[pokemon_id] = true
 		pokemon_by_location.pc[pokemon_id] = nil
+		M.save()
 	else
 		assert(false, "Your party is full")
 	end
 end
 
+function M.heal_party()
+	for id,_ in pairs(pokemon_by_location.party) do
+		local pkmn = get(id)
+		_pokemon.rest(pkmn)
+	end
+	M.save()
+end
 
 return M

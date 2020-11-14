@@ -37,7 +37,7 @@ local function setup_main_information(nodes, pokemon)
 		gui.play_flipbook(nodes["pokemon/pokemon_sprite"], pokemon_sprite)
 	end
 
-	local species_text = pokedex.get_species_display(species, pokemon.variant)
+	local species_text = pokedex.get_species_display(species, _pokemon.get_variant(pokemon))
 	gui.set_text(nodes["pokemon/index"], string.format("#%03d %s", _pokemon.get_index_number(pokemon), species_text))
 	
 	gui.set_text(nodes["pokemon/species"], nickname)
@@ -93,8 +93,15 @@ local function setup_info_tab(nodes, pokemon)
 	end	
 
 	local skill_string = ""
-	for _, skill in pairs(_pokemon.get_skills(pokemon)) do
-		skill_string = skill_string .. "• " .. skill .. "\n"
+	local skills = _pokemon.get_skills(pokemon)
+	if #skills > 8 then
+		for _, skill in pairs(skills) do
+			skill_string = skill_string .. skill .. ", "
+		end
+	else
+		for _, skill in pairs(skills) do
+			skill_string = skill_string .. "• " .. skill .. "\n"
+		end
 	end
 	gui.set_text(nodes["pokemon/traits/txt_skills"], skill_string)
 
@@ -152,10 +159,7 @@ local function setup_info_tab(nodes, pokemon)
 		[_pokemon.MALE] = "male",
 		[_pokemon.FEMALE] = "female"
 	}
-	local genderized, gender = _pokemon.genderized(pokemon)
-	if not genderized then
-		gender = _pokemon.get_gender(pokemon)
-	end
+	local gender = _pokemon.get_gender(pokemon)
 	if gender ~= nil then
 		gui.set_enabled(nodes["pokemon/gender_icon"], true)
 		gui.play_flipbook(nodes["pokemon/gender_icon"], g[gender])
@@ -194,7 +198,7 @@ end
 function M.on_message(message_id, message, sender)
 	if message_id == messages.RESPONSE and message.response then
 		if message.id == messages.FULL_REST then
-			_pokemon.reset_in_storage(active_pokemon)
+			storage.heal_party()
 			msg.post(url.PARTY, messages.REFRESH_STATUS)
 			msg.post(url.PARTY, messages.REFRESH_HP)
 			msg.post(url.PARTY, messages.REFRESH_PP)

@@ -3002,13 +3002,13 @@ nodes {
     w: 1.0
   }
   scale {
-    x: 0.75
-    y: 0.75
+    x: 0.7
+    y: 0.7
     z: 1.0
     w: 1.0
   }
   size {
-    x: 300.0
+    x: 280.0
     y: 100.0
     z: 0.0
     w: 1.0
@@ -3049,7 +3049,7 @@ nodes {
   outline_alpha: 1.0
   shadow_alpha: 1.0
   template_node_child: true
-  text_leading: 0.9
+  text_leading: 0.8
   text_tracking: 0.0
 }
 nodes {
@@ -6939,7 +6939,7 @@ nodes {
 }
 nodes {
   position {
-    x: -100.0
+    x: 34.0
     y: 4.0
     z: 0.0
     w: 1.0
@@ -7057,7 +7057,7 @@ nodes {
 }
 nodes {
   position {
-    x: -33.0
+    x: 167.0
     y: 4.0
     z: 0.0
     w: 1.0
@@ -7175,7 +7175,7 @@ nodes {
 }
 nodes {
   position {
-    x: 33.0
+    x: 100.0
     y: 4.0
     z: 0.0
     w: 1.0
@@ -7293,7 +7293,7 @@ nodes {
 }
 nodes {
   position {
-    x: 100.0
+    x: -33.0
     y: 4.0
     z: 0.0
     w: 1.0
@@ -7411,7 +7411,7 @@ nodes {
 }
 nodes {
   position {
-    x: 167.0
+    x: -100.0
     y: 4.0
     z: 0.0
     w: 1.0
